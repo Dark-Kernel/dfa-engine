@@ -94,9 +94,9 @@ app.post('/api/dfa/accepts', (req, res) => {
 
 app.post('/api/nfa/accepts', (req, res) => {
   const { alphabet, delta, initial, final, string } = req.body;
-  const nfa = new NFA(alphabet, delta, initial, final);
-  const result = nfa.accepts(string);
-  res.json({ accepts: true });
+  const dfa = new DFA(alphabet, delta, initial, final);
+  const result = dfa.accepts(string);
+  res.json({ accepts: result });
 });
 
 app.get('/api', (req, res) => {
